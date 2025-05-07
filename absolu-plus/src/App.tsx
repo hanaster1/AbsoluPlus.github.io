@@ -3,18 +3,40 @@
 // creator: myhamster1
 // website main page
 
-import { Container, Typography, Box, Button } from '@mui/material';
+import { Container, Typography, Box, Button, AppBar, Toolbar,IconButton } from '@mui/material';
 import { LocalDrink, Build, Opacity, Speed, VerifiedUser, Lightbulb, CleaningServices } from "@mui/icons-material";
+import MenuIcon from '@mui/icons-material/Menu';
 import roboticImage from '/assets/images/robot-arm.png';
 
 export function App() {
   return (
-    <Box sx={{ fontFamily: 'sans-serif' }}>
+    <Box // the largest box 
+      sx={{
+        fontFamily: 'sans-serif',
+        overflowX: 'hidden',
+        width: '100vw',
+        maxWidth: '100%',
+        boxSizing: 'border-box'
+      }}
+    >
+      {/* Header */}
+      <AppBar position="static" sx={{ backgroundColor: '#06314d' }}>
+        <Toolbar>
+          <IconButton edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+            AbsoluPlus
+          </Typography>
+          <Button color="inherit">Login</Button>
+        </Toolbar>
+      </AppBar>
+
       {/* Hero */}
       <Box sx={{ backgroundColor: '#06314d', color: 'white', py: 6 }}>
         <Container>
           <Box display="flex" flexDirection={{ xs: 'column', md: 'row' }} alignItems="center" gap={4}>
-            <Box flex={1}>
+            <Box flex={1} textAlign={{ xs: 'center', md: 'left' }}>
               <Typography variant="h4" fontWeight="bold" gutterBottom>
                 Automating Clean Packaging for the Future
               </Typography>
@@ -26,8 +48,15 @@ export function App() {
               </Button>
             </Box>
 
-            <Box flex={1} display="flex" justifyContent="flex-end">
-              <img src={roboticImage} alt="automation" style={{ width: '60%' }} />
+            <Box 
+              flex={1} display="flex" 
+              justifyContent={{ xs: 'center', md: 'flex-end' }} 
+              mt={{ xs: 4, md: 0 }} 
+              sx={{ maxWidth: '100%' }}>
+              <img 
+                src={roboticImage} 
+                alt="automation" 
+                style={{ width: '100%', maxWidth: '300px', height: 'auto' }} />
             </Box>
           </Box>
         </Container>
@@ -45,7 +74,7 @@ export function App() {
               { icon: <Build fontSize="large" />, label: "Custom Industrial Automation" },
               { icon: <Opacity fontSize="large" />, label: "Clean & Septic-Safe Design" },
             ].map((item, index) => (
-              <Box width={{ xs: '100%', md: '30%' }} textAlign="center" key={index}>
+              <Box width={{ xs: '100%', sm: '45%', md: '30%' }} textAlign="center" key={index}>
                 {item.icon}
                 <Typography variant="subtitle1" mt={1}>{item.label}</Typography>
               </Box>
@@ -67,7 +96,7 @@ export function App() {
               { icon: <Speed />, title: "Efficiency & Speed", desc: "Fast delivery, long-term reliability." },
               { icon: <VerifiedUser />, title: "Trusted Partner", desc: "Reliable for industrial clients." },
             ].map((item, i) => (
-              <Box width={{ xs: '100%', md: '30%' }} key={i} textAlign="center">
+              <Box width={{ xs: '100%', sm: '45%', md: '30%' }} key={i} textAlign="center">
                 {item.icon}
                 <Typography variant="subtitle1" fontWeight="bold">{item.title}</Typography>
                 <Typography variant="body2">{item.desc}</Typography>
@@ -91,42 +120,3 @@ export function App() {
 }
 
 export default App
-
-// Backup the original code 
-/*
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
-*/
